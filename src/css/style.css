@@ -1,0 +1,120 @@
+/* global */
+html {
+	scroll-behavior: smooth;
+}
+
+body {
+	--white: #ffffff;
+	--white-50: rgb(255 255 255 / 50%);
+
+	--black: #111111;
+	--black-50: rgb(0 0 0 / 50%);
+
+	min-height: 100vh;
+	min-width: 100vw;
+	overflow: hidden overlay;
+}
+
+#root {
+	width: 100vw;
+	height: 100vh;
+}
+/* global */
+
+/* interface */
+.fone {
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	left: 0;
+	top: 0;
+	z-index: -1;
+	background-image: url("../assets/home.png");
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+
+.reload {
+	width: 68px;
+	height: 68px;
+	font-family: Lucida Sans Unicode;
+	font-size: 50px;
+	color: var(--white);
+	background-color: var(--black-50);
+	box-shadow: 0 0 10px 3px var(--white-50);
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	position: fixed;
+	z-index: 10;
+	bottom: 10px;
+	left: 50%;
+	margin-left: -28px;
+	transition: all 0.3s ease;
+}
+
+.reload:hover {
+	transform: rotate(360deg);
+}
+/* interface */
+
+/* ancients */
+.ancients {
+	width: 100vw;
+	height: 100vh;
+	position: fixed;
+	left: 0;
+	top: 0;
+	z-index: 1;
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+	box-sizing: border-box;
+	gap: 50px;
+	padding: 50px;
+	padding-bottom: 70px;
+}
+
+.ancient__item {
+	max-width: 370px;
+	max-height: 480px;
+	min-width: 200px;
+	min-height: 260px;
+
+	transform: perspective(600px) rotateY(-90deg);
+	transition: all 0.5s ease;
+}
+
+.ancient__item img {
+	display: block;
+	width: 100%;
+	border-radius: 10px;
+	box-shadow: 0 0 10px 3px var(--white-50);
+
+	transition: all 0.2s ease;
+	cursor: pointer;
+}
+
+.ancient__item:hover img {
+	transform: scale(1.1, 1.1);
+}
+
+.ancients-active .ancient__item {
+	transform: perspective(600px) rotateY(0deg);
+}
+
+.ancient-selected {
+	z-index: 2;
+}
+.ancient-selected img {
+	position: fixed;
+	left: 50%;
+	top: 50%;
+	transition: all 1s ease !important;
+	transform: scale(5, 5) rotate(360deg) !important;
+	opacity: 0;
+}
+/* ancients */
