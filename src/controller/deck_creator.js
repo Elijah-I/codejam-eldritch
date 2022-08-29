@@ -18,9 +18,11 @@ export class DeckCreator {
 				break
 
 			case "hard":
+				cards = this.keep(cards, ["normal", "hard"])
 				break
 
 			case "very_hard":
+				cards = this.keep(cards, ["hard"])
 				break
 		}
 
@@ -34,8 +36,8 @@ export class DeckCreator {
 		const filtered = {}
 		for (let color in cards) {
 			// filter card
-			filtered[color] = cards[color].filter(
-				(card) => card.difficulty == keep
+			filtered[color] = cards[color].filter((card) =>
+				keep.includes(card.difficulty)
 			)
 
 			// check if left enought
