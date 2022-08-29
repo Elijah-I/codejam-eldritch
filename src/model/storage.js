@@ -7,7 +7,9 @@ export const ENUM = {
 }
 
 export const initialState = {
+	level: null,
 	ancient: null,
+	baseDeck: [],
 	stage: ENUM.STAGES.ACIENT
 }
 

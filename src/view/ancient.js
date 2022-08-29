@@ -1,14 +1,15 @@
 import { id, delay, addEvent } from "../data/default"
 
 export class Ancient {
-	constructor(Ancients, Controller) {
+	constructor(Ancients, Controller, Diff) {
+		this.diff = Diff
 		this.ancients = Ancients
 		this.controller = Controller
 	}
 
 	async render() {
 		const ancients = document.createElement("div")
-		ancients.classList.add("ancients")
+		ancients.classList.add("ancients", "container")
 
 		const content = []
 		for (let ancient of this.ancients) {
@@ -36,10 +37,11 @@ export class Ancient {
 	pickAncient(ancient) {
 		id(`#${ancient.id}`).classList.add("ancient-selected")
 
-		this.controller.pickAncient(ancient)
-	}
+		setTimeout(() => {
+			id(`.ancients`).remove()
+			this.diff.render()
+		}, 800)
 
-	clear() {
-		id(`.ancients`).remove()
+		this.controller.pickAncient(ancient)
 	}
 }

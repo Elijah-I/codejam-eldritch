@@ -1,5 +1,9 @@
 export const difficulties = [
 	{
+		id: "very_easy",
+		name: "Очень низкая"
+	},
+	{
 		id: "easy",
 		name: "Низкая"
 	},
@@ -10,5 +14,9 @@ export const difficulties = [
 	{
 		id: "hard",
 		name: "Высокая"
+	},
+	{
+		id: "very_hard",
+		name: "Очень высокая"
 	}
 ]

@@ -11,11 +11,16 @@ class App {
 		this.controller = new Controller()
 
 		this.diff = new Diff(Level, this.controller)
-		this.ancient = new Ancient(Ancients, this.controller)
+		this.ancient = new Ancient(Ancients, this.controller, this.diff)
 
 		this.controller.init({
 			diff: this.diff,
-			ancient: this.ancient
+			ancient: this.ancient,
+			cards: {
+				brown: brownCards,
+				blue: blueCards,
+				green: greenCards
+			}
 		})
 	}
 
