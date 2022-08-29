@@ -1,5 +1,6 @@
 import { Ancients, Level, brownCards, blueCards, greenCards } from "../model"
 
+import { Game } from "./game"
 import { Diff } from "./diff"
 import { Ancient } from "./ancient"
 import { Interface } from "./inerface"
@@ -10,6 +11,7 @@ class App {
 		this.interface = new Interface()
 		this.controller = new Controller()
 
+		this.game = new Game(this.controller)
 		this.diff = new Diff(Level, this.controller)
 		this.ancient = new Ancient(Ancients, this.controller, this.diff)
 

@@ -74,12 +74,16 @@ body {
 	align-items: center;
 	box-sizing: border-box;
 	gap: 50px;
-	padding: 50px;
 	padding-bottom: 70px;
 }
 /* common */
 
 /* ancients */
+.ancients::before,
+.ancients::after {
+	content: "";
+}
+
 .ancient__item {
 	max-width: 370px;
 	max-height: 480px;
