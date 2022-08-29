@@ -11,6 +11,7 @@ export class DeckCreator {
 				break
 
 			case "easy":
+				cards = this.keep(cards, ["easy", "normal"])
 				break
 
 			case "normal":
