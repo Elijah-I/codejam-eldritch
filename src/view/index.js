@@ -8,12 +8,13 @@ import { Controller } from "../controller"
 
 class App {
 	constructor() {
-		this.interface = new Interface()
 		this.controller = new Controller()
 
 		this.game = new Game(Level, this.controller)
-		this.diff = new Diff(Level, this.controller)
+		this.diff = new Diff(this.game, Level, this.controller)
 		this.ancient = new Ancient(Ancients, this.controller, this.diff)
+
+		this.interface = new Interface(this.ancient, this.controller)
 
 		this.controller.init({
 			diff: this.diff,
@@ -28,7 +29,7 @@ class App {
 
 	render() {
 		this.interface.render()
-		this.game.render()
+		this.ancient.render()
 	}
 }
 

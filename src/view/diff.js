@@ -1,7 +1,8 @@
 import { id, delay, addEvent } from "../data/default"
 
 export class Diff {
-	constructor(Level, Controller) {
+	constructor(Game, Level, Controller) {
+		this.game = Game
 		this.level = Level
 		this.controller = Controller
 	}
@@ -49,7 +50,10 @@ export class Diff {
 
 	pickLevel(level) {
 		id(`.diff`).remove()
-
 		this.controller.pickLevel(level)
+
+		setTimeout(() => {
+			this.game.render()
+		}, 0)
 	}
 }

@@ -17,7 +17,7 @@ export const initialState = {
 	gameStage: "firstStage"
 }
 
-export const state = Object.assign(
+export let state = Object.assign(
 	{
 		get subDeck() {
 			return this.deck[this.gameStage]

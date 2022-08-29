@@ -115,7 +115,7 @@ export class Game {
 		const table = id(".game__table")
 
 		if (state.currentCard === null) {
-			table.clear()
+			if (this.tosser !== "over") table.clear()
 			return
 		}
 

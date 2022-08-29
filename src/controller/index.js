@@ -1,4 +1,4 @@
-import { state, ENUM } from "../model/storage"
+import { state, initialState, ENUM } from "../model/storage"
 import { DeckCreator } from "./deck_creator"
 
 export class Controller {
@@ -8,30 +8,6 @@ export class Controller {
 		this.anctient = ancient
 
 		this.deckCreator = new DeckCreator()
-
-		this.pickAncient({
-			id: "azathoth",
-			name: "azathoth",
-			cardFace:
-				"http://localhost:8080/js/../assets/Ancients/Azathoth.png",
-			firstStage: {
-				greenCards: 1,
-				blueCards: 1,
-				brownCards: 2
-			},
-			secondStage: {
-				greenCards: 2,
-				blueCards: 1,
-				brownCards: 3
-			},
-			thirdStage: {
-				greenCards: 2,
-				blueCards: 0,
-				brownCards: 4
-			}
-		})
-
-		this.pickLevel({ id: "very_easy", name: "Очень легкая", point: 0 })
 	}
 
 	pickAncient(ancient) {
@@ -56,5 +32,11 @@ export class Controller {
 	nextStage() {
 		if (state.gameStage === "secondStage") state.gameStage = "thirdStage"
 		if (state.gameStage === "firstStage") state.gameStage = "secondStage"
+	}
+
+	reload() {
+		Object.keys(initialState).forEach(
+			(option) => (state[option] = initialState[option])
+		)
 	}
 }
