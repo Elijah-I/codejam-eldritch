@@ -14,7 +14,7 @@ export class Ancient {
 		const content = []
 		for (let ancient of this.ancients) {
 			const item = document.createElement("div")
-			item.classList.add("ancient__item")
+			item.classList.add("ancient__item", "card")
 			item.id = ancient.id
 
 			const img = new Image()

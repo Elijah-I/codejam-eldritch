@@ -13,6 +13,8 @@ body {
 	min-height: 100vh;
 	min-width: 100vw;
 	overflow: hidden overlay;
+
+	font: normal 18px Verdana, sans-serif;
 }
 
 #root {
@@ -64,7 +66,7 @@ body {
 /* common */
 .container {
 	width: 100vw;
-	height: 100vh;
+	height: calc(100vh - 90px);
 	position: fixed;
 	left: 0;
 	top: 0;
@@ -74,17 +76,9 @@ body {
 	align-items: center;
 	box-sizing: border-box;
 	gap: 50px;
-	padding-bottom: 70px;
-}
-/* common */
-
-/* ancients */
-.ancients::before,
-.ancients::after {
-	content: "";
 }
 
-.ancient__item {
+.card {
 	max-width: 370px;
 	max-height: 480px;
 	min-width: 200px;
@@ -92,9 +86,12 @@ body {
 
 	transform: perspective(600px) rotateY(-90deg);
 	transition: all 0.5s ease;
+
+	user-select: none;
 }
 
-.ancient__item img {
+.card img,
+.deck b {
 	display: block;
 	width: 100%;
 	border-radius: 10px;
@@ -104,11 +101,20 @@ body {
 	cursor: pointer;
 }
 
-.ancient__item:hover img {
+.card:hover img,
+.card:hover b {
 	transform: scale(1.1, 1.1);
 }
+/* common */
 
-.ancients-active .ancient__item {
+/* ancients */
+.ancients::before,
+.ancients::after {
+	content: "";
+}
+
+.ancients-active .ancient__item,
+.card-active {
 	transform: perspective(600px) rotateY(0deg);
 }
 
@@ -140,11 +146,11 @@ body {
 
 	opacity: 0.5;
 	cursor: pointer;
-	transition: all 0.5s ease-out, opacity 0 ease;
+	transition: all 0.5s ease-out, opacity 0s ease;
 }
 
 .star-active {
-	opacity: 1;
+	opacity: 1 !important;
 }
 
 .diff-active .star {
@@ -152,3 +158,155 @@ body {
 	min-height: 100px;
 }
 /* diff */
+
+/* game */
+.deck,
+.game__ancient {
+	max-width: 111px;
+	max-height: 144px;
+	min-width: 111px;
+	min-height: 144px;
+
+	position: absolute;
+	right: 50px;
+	bottom: 0;
+}
+
+.deck b {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	text-align: center;
+	display: flex;
+	align-items: center;
+	color: var(--white);
+	cursor: pointer;
+	transition: all 0.2s ease;
+	font-weight: 400;
+	background-color: var(--white-50);
+	box-shadow: 0 0 3px var(--white);
+}
+
+.deck-reverse {
+	transform: perspective(600px) rotate(360deg) !important;
+}
+
+.game__ancient {
+	right: auto;
+	left: 50px;
+	z-index: 2;
+}
+
+.game__ancient img {
+	cursor: default;
+	transform-origin: left bottom;
+}
+.game__ancient:hover img {
+	transform: scale(5, 5);
+}
+
+.game__label {
+	position: absolute;
+	top: 10px;
+	font-size: 24px;
+	letter-spacing: 1px;
+	color: var(--white);
+	text-shadow: 0 0 10px var(--black);
+}
+
+.game__diff {
+	position: absolute;
+	bottom: 5px;
+	left: 184px;
+	width: 15px;
+	height: 134px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.game__star {
+	max-width: 20px;
+	max-height: 20px;
+	cursor: default;
+	opacity: 0.35;
+}
+
+.game-active .deck,
+.game-active .game__ancient {
+	transform: perspective(600px) rotateY(0deg);
+}
+
+.game-active .game__star {
+	min-width: 15px;
+	min-height: 15px;
+}
+
+.game__info {
+	width: 48px;
+	height: 144px;
+	display: flex;
+	flex-direction: column;
+	justify-content: stretch;
+
+	position: absolute;
+	bottom: 0;
+	right: 184px;
+}
+
+.game__info div {
+	flex: 1;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: var(--white);
+	text-shadow: 0 0 2px var(--white-50);
+}
+
+.game__info div:nth-child(1) {
+	background-color: rgb(0 128 0 / 50%);
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+}
+.game__info div:nth-child(2) {
+	background-color: rgb(165 87 42 / 50%);
+}
+.game__info div:nth-child(3) {
+	background-color: rgb(35 35 172 / 50%);
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+}
+
+.game__table {
+	width: 100%;
+	height: calc(100% - 296px);
+	position: absolute;
+	left: 0;
+	top: 102px;
+	z-index: 1;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 50px;
+}
+
+.game__table::before,
+.game__table::after {
+	content: "";
+}
+
+.game__card {
+	max-width: 160px;
+	max-height: 236px;
+	min-width: auto;
+	min-height: auto;
+
+	cursor: default;
+	pointer-events: none;
+}
+
+.game__card:nth-last-child() {
+	margin-right: 0;
+}
+/* game */

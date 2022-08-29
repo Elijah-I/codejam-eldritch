@@ -31,7 +31,7 @@ export class Controller {
 			}
 		})
 
-		this.pickLevel({ id: "very_easy", name: "Очень легкая" })
+		this.pickLevel({ id: "very_easy", name: "Очень легкая", point: 0 })
 	}
 
 	pickAncient(ancient) {
@@ -47,5 +47,14 @@ export class Controller {
 			state.ancient,
 			state.level
 		)
+	}
+
+	tossCard() {
+		state.currentCard = state.subDeck.length ? state.subDeck.pop() : null
+	}
+
+	nextStage() {
+		if (state.gameStage === "secondStage") state.gameStage = "thirdStage"
+		if (state.gameStage === "firstStage") state.gameStage = "secondStage"
 	}
 }

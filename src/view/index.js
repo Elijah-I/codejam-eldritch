@@ -11,7 +11,7 @@ class App {
 		this.interface = new Interface()
 		this.controller = new Controller()
 
-		this.game = new Game(this.controller)
+		this.game = new Game(Level, this.controller)
 		this.diff = new Diff(Level, this.controller)
 		this.ancient = new Ancient(Ancients, this.controller, this.diff)
 
@@ -28,7 +28,7 @@ class App {
 
 	render() {
 		this.interface.render()
-		this.ancient.render()
+		this.game.render()
 	}
 }
 

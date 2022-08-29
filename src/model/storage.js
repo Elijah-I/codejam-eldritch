@@ -9,8 +9,19 @@ export const ENUM = {
 export const initialState = {
 	level: null,
 	ancient: null,
+	currentCard: null,
+
 	deck: [],
-	stage: ENUM.STAGES.ACIENT
+
+	stage: ENUM.STAGES.ACIENT,
+	gameStage: "firstStage"
 }
 
-export const state = Object.assign({}, initialState)
+export const state = Object.assign(
+	{
+		get subDeck() {
+			return this.deck[this.gameStage]
+		}
+	},
+	initialState
+)

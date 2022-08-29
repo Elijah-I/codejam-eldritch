@@ -11,7 +11,10 @@ export function id(selector) {
 			return el
 		}
 		el.html = (h) => {
-			el.innerHTML = h.replace(/[\r\n]/g, "").replace(/\s\s+/g, " ")
+			el.innerHTML = h
+				.toString()
+				.replace(/[\r\n]/g, "")
+				.replace(/\s\s+/g, " ")
 			return el
 		}
 		el.clear = () => {
